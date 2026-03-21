@@ -30,12 +30,6 @@ A modern **real-time chat application** built using React and Firebase, enabling
 
 ---
 
-## 📸 Screenshots
-
-*Add your app screenshots here*
-
----
-
 ## ⚙️ Installation & Setup
 
 Clone the repository:
