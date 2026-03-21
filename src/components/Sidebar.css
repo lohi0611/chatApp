@@ -1,0 +1,262 @@
+/* ========================================
+   Sidebar Layout & User List Styles
+   ======================================== */
+
+.sidebar {
+  width: 320px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: calc(100vh - 64px); /* Topbar height */
+  animation: slideInLeft 0.5s ease-out;
+}
+
+/* ---- My Profile / Code Info ---- */
+.sidebar-me {
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+.me-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.me-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.me-code {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: fit-content;
+}
+
+.me-code:hover {
+  color: var(--text-primary);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.me-code:active {
+  transform: scale(0.95);
+}
+
+/* ---- Sidebar Search Form ---- */
+.sidebar-search {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--bg-secondary);
+  padding: 0.35rem 0.35rem 0.35rem 1rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.add-friend-btn {
+  background: var(--accent-gradient);
+  border: none;
+  color: var(--bg-primary);
+  font-weight: 800;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+}
+
+.add-friend-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glow);
+}
+
+.search-status {
+  margin-top: 0.65rem;
+  font-size: 0.72rem;
+  color: var(--success);
+  font-weight: 600;
+  text-align: center;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.sidebar-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.user-count {
+  font-size: 0.75rem;
+  background: rgba(0, 206, 201, 0.1);
+  color: var(--success);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+/* ---- User List ---- */
+.sidebar-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-user-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-user-item:hover {
+  background: var(--bg-glass-hover);
+  transform: translateX(4px);
+}
+
+.sidebar-user-item--active {
+  background: rgba(108, 92, 231, 0.15);
+  border: 1px solid var(--border-accent);
+}
+
+.user-avatar-container {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.user-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-subtle);
+}
+
+.user-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background: var(--success);
+  border: 2.5px solid var(--bg-secondary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 206, 201, 0.4);
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.user-status {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.active-marker {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+  box-shadow: -2px 0 10px var(--accent-glow);
+}
+
+/* ---- Empty State ---- */
+.sidebar-empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.sidebar-empty-hint {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    padding: 0.75rem 0;
+  }
+
+  .sidebar-header, .user-info, .sidebar-header h3, .user-count {
+    display: none;
+  }
+
+  .sidebar-user-item {
+    justify-content: center;
+  }
+}
