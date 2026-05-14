@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders the ChatFlow login screen', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /chatflow/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /continue with google/i })).toBeInTheDocument();
 });
